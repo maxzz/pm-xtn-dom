@@ -3,8 +3,8 @@
 PM extension DOM access.
 
 These definitions are used in the following projects:
-    * extension
-    * components test
+  * extension
+  * components test
 
 #### Links, credits, refs
 

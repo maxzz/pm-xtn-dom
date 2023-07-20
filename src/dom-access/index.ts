@@ -1,3 +1,5 @@
+import { traceAccess, MAXZALTPSW } from "../types";
+
 //#region Utils
 
 export interface IPoint {
@@ -18,12 +20,6 @@ export function px(value: number): string {
 export function di(value: string): number {
     // 0. to digit.
     return value !== '' ? parseInt(value, 10) : 0; // parseInt on '' gives NaN
-}
-
-export const MAXZALTPSW = 'maxzpsw'; // marker for password field with -webkit-text-security attribute
-
-export const traceAccess = {
-    visibilityLoop: false,
 }
 
 export class utl {
@@ -572,23 +568,4 @@ export function nodeNames(nodes: NodeList, tagWithColor: boolean = false): strin
 export function nodeNamesArray(nodes: NodeList, tagWithColor: boolean = false): string[] {
     // In most cases with mutation observer it is just a single element, tagWithColor will work only with the first element.
     return Array.prototype.map.call(nodes, (node: HTMLElement, index: number) => `${nodeName(node, tagWithColor)}`) as string[];
-}
-
-export function throttle(eventName: string, customEventName: string, obj?: any) { // from https://developer.mozilla.org/en-US/docs/Web/Events/resize
-    obj = obj || window;
-    let running = false;
-
-    function func() {
-        if (running) {
-            return;
-        }
-
-        running = true;
-        requestAnimationFrame(function () {
-            obj.dispatchEvent(new CustomEvent(customEventName));
-            running = false;
-        });
-    }
-
-    obj.addEventListener(eventName, func);
 }

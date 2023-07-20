@@ -10,5 +10,8 @@
     "license": "MIT",
     "scripts": {
         "dev": "tsc -w"
+    },
+    "dependencies": {
+        "parse5": "5.1.1"
     }
 }
