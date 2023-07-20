@@ -1,0 +1,14 @@
+{
+    "name": "pm-xtn-dom",
+    "version": "1.0.0",
+    "description": "PM extension DOM access",
+    "type": "module",
+    "main": "./src/index.ts",
+    "files": [
+        "./src"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "dev": "tsc -w"
+    }
+}
