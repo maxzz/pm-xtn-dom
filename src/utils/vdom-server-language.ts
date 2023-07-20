@@ -3,14 +3,16 @@
 //TODO: upgrade parse5 from v5 to v7 // 07.13.23
 
 import * as parse5 from 'parse5';
+import * as types from 'parse5/dist/tree-adapters/default';
+import { Attribute as typesAttribute } from 'parse5/dist/common/token';
 
-export type ASTNode = parse5.DefaultTreeNode;
-export type ASTElement = parse5.DefaultTreeElement;
-export type ASTAttribute = parse5.Attribute;
-export type ASTParentNode = parse5.DefaultTreeParentNode;
-export type ASTTextNode = parse5.DefaultTreeTextNode;
-export type ASTDocument = parse5.DefaultTreeDocument;
-export type ASTDocumentFragment = parse5.DefaultTreeDocumentFragment;
+export type ASTNode = types.Node;
+export type ASTElement = types.Element;
+export type ASTAttribute = typesAttribute;
+export type ASTParentNode = types.ParentNode;
+export type ASTTextNode = types.TextNode;
+export type ASTDocument = types.Document;
+export type ASTDocumentFragment = types.DocumentFragment;
 
 export function isHTMLElement(el: ASTNode): el is ASTElement {
     return (el as ASTElement).tagName !== undefined;
@@ -129,7 +131,7 @@ class DomUtils {
         a.push(node.tagName);
 
         if (node.attr) {
-            let at: any = {}; 
+            let at: any = {};
             let isSVG: boolean = node.tagName.toLowerCase() === 'svg';
             Object.keys(node.attr).forEach((key) => {
                 if (!isSVG || key !== 'xmlns') {
@@ -169,7 +171,7 @@ export function findHtmlTag(astRoot: ASTDocument | ASTDocumentFragment | ASTElem
         return;
     }
     return DomUtils.nodeByTag(astRoot, tagName);
-} //findHtmlTag()
+}
 
 export function findAttr(ast: IHatNodes, attr: string, value: string): IHatNode | undefined {
     if (!ast) {
@@ -185,13 +187,13 @@ export function findAttr(ast: IHatNodes, attr: string, value: string): IHatNode 
     } else {
         return DomUtils.nodeByAttr(ast, attr, value);
     }
-} //findAttr()
+}
 
 export function getChildren(node: IHatNode | undefined): IHatNodes | undefined {
     if (node && (node as IHatElement).childNodes) {
         return (node as IHatElement).childNodes;
     }
-} //getChildren()
+}
 
 export function transpileAstToHat(elem: ASTNode | ASTDocumentFragment): IHatNodes | undefined {
     if (!elem) {
@@ -212,7 +214,7 @@ export function transpileAstToHat(elem: ASTNode | ASTDocumentFragment): IHatNode
         DomUtils.reduce(elem, out);
         return out[0];
     }
-} //transpileAstToHat()
+}
 
 export function makeDomArray(ast: IHatNodes): any[] {
     if (!ast) {
@@ -243,7 +245,7 @@ export function makeDomArray(ast: IHatNodes): any[] {
         DomUtils.produce(ast, out);
     }
     return out;
-} //makeDomArray()
+}
 
 export function stringifyDomArray(res: any): string {
     // JSON will create sorrounding [] if source is array.
@@ -255,11 +257,11 @@ export function stringifyDomArray(res: any): string {
         s = s.substr(1, s.length - 2); // i.e. transform [[...]] to [...]
     }
     return s;
-} //stringifyDomArray()
+}
 
 export function makeDomi(html: string, htmlIdOrTag?: string): string {
     // 0. Optional paramter specifies htmlId of element to get children of.
-    const doc: ASTDocument = parse5.parse(html) as ASTDocument;
+    const doc: ASTDocument = parse5.parse(html);
 
     let hat: IHatNodes = transpileAstToHat(doc);
     if (htmlIdOrTag) {
@@ -286,4 +288,4 @@ export function makeDomi(html: string, htmlIdOrTag?: string): string {
 
     let domJson: any[] = makeDomArray(hat);
     return stringifyDomArray(domJson);
-} //makeDomi()
+}
