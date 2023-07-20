@@ -1,6 +1,6 @@
 {
     "name": "pm-xtn-dom",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "PM extension DOM access",
     "type": "module",
     "main": "./src/index.ts",
@@ -15,6 +15,9 @@
         "parse5": "5.1.1"
     },
     "devDependencies": {
+        "@types/parse5": "5.0.2"
+    },
+    "peerDependencies": {
         "@types/parse5": "5.0.2"
     }
 }
