@@ -1,5 +1,5 @@
-type IDomiArray = any;
-type IDomiString = string;
+export type IDomiArray = any;
+export type IDomiString = string;
 
 export function domi(jsonTemplate_: IDomiArray, doc_?: HTMLDocument, nodes_?: Object): HTMLElement {
     // 0. domi - Document Object Markup Language. Note that 'elemNameOrArray' is: either the full element name (eg. div) or an array of elements in JSON notation.
