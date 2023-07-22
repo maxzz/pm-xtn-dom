@@ -1,6 +1,6 @@
 {
     "name": "pm-xtn-dom",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "PM extension DOM access",
     "type": "module",
     "main": "./src/index.ts",
@@ -9,6 +9,27 @@
         "./dist/es2020"
     ],
     "types": "./dist/es2020/index.d.ts",
+    "exports": {
+        "./package.json": "./package.json",
+        ".": {
+            "types": "./dist/es2020/index.d.ts",
+            "import": {
+                "types": "./dist/es2020/index.d.ts",
+                "default": "./dist/es2020/index.mjs"
+            },
+            "module": "./dist/es2020/index.mjs",
+            "default": "./dist/es2020/index.mjs"
+        },
+        "./*": {
+            "types": "./dist/es2020/*.d.ts",
+            "import": {
+                "types": "./dist/es2020/*.d.ts",
+                "default": "./dist/es2020/*.mjs"
+            },
+            "module": "./dist/es2020/*.mjs",
+            "default": "./dist/es2020/*.mjs"
+        }
+    },
     "license": "MIT",
     "scripts": {
         "dev": "tsc -w",
