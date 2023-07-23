@@ -1,8 +1,9 @@
 {
     "name": "pm-xtn-dom",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "description": "PM extension DOM access",
     "type": "module",
+    "main": "./dist/es2020/index.mjs",
     "files": [
         "./src",
         "./dist/es2020"
