@@ -1,6 +1,6 @@
 {
     "name": "pm-xtn-dom",
-    "version": "1.0.10",
+    "version": "1.0.12",
     "description": "PM extension DOM access",
     "type": "module",
     "files": [
