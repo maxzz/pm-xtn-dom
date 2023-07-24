@@ -2,35 +2,36 @@
     "name": "pm-xtn-dom",
     "version": "1.0.13",
     "description": "PM extension DOM access",
-    "type": "module",
-    "main": "./dist/es2020/index.mjs",
     "files": [
         "./src",
         "./dist/es2020"
     ],
-    "types": "./dist/es2020/index.d.ts",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/maxzz/pm-xtn-dom"
+    },
+    "type": "module",
     "exports": {
         "./package.json": "./package.json",
-        ".": {
+        "./ts": {
             "types": "./dist/es2020/index.d.ts",
             "import": {
                 "types": "./dist/es2020/index.d.ts",
                 "default": "./dist/es2020/index.mjs"
             },
-            "module": "./dist/es2020/index.mjs",
             "default": "./dist/es2020/index.mjs"
-        },
-        "./*": {
-            "types": "./dist/es2020/*.d.ts",
-            "import": {
-                "types": "./dist/es2020/*.d.ts",
-                "default": "./dist/es2020/*.mjs"
-            },
-            "module": "./dist/es2020/*.mjs",
-            "default": "./dist/es2020/*.mjs"
         }
     },
-    "license": "MIT",
+    "typesVersions": {
+        ">=3.1": {
+            "ts": [
+                "./dist/es2020/index.d.ts"
+            ]
+        }
+    },
+    "types": "./dist/es2020/index.d.ts",
+    "main": "./dist/es2020/index.mjs",
     "scripts": {
         "dev": "tsc -w",
         "build": "yarn rollup -c",
