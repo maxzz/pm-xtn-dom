@@ -21,6 +21,14 @@
                 "default": "./dist/es2020/index.mjs"
             },
             "default": "./dist/es2020/index.mjs"
+        },
+        ".": {
+            "types": "./dist/es2020/index.d.ts",
+            "import": {
+                "types": "./dist/es2020/index.d.ts",
+                "default": "./dist/es2020/index.mjs"
+            },
+            "default": "./dist/es2020/index.mjs"
         }
     },
     "typesVersions": {
