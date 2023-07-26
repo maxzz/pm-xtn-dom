@@ -20,8 +20,6 @@ function commonPlugins() {
     return [
         resolve(),
         commonjs(),
-        typescript({ declaration: true }),
-        (minify ? terser() : [])
     ];
 }
 
@@ -31,7 +29,9 @@ function createConfing_es({ input, output }) {
         output: { file: output, format: "es", },
         plugins: [
             ...commonPlugins,
-            typescript({ compilerOptions: { declaration: true, outDir: './es6ts', rootDir: './src/vdom-builder' }, tsconfig: 'tsconfig-builder.json' }),
+            // typescript({ compilerOptions: { declaration: true, outDir: './es6ts', rootDir: './src/vdom-builder' }, tsconfig: 'tsconfig-builder.json' }),
+            typescript({ tsconfig: './tsconfig-builder.json' }),
+            (minify ? terser() : [])
         ],
     };
 }
@@ -47,6 +47,9 @@ function createConfing_def({ input, output }) {
         },
         plugins: [
             ...commonPlugins(),
+            // typescript({ declaration: true }),
+            typescript({ tsconfig: './tsconfig-builder.json' }),
+            (minify ? terser() : [])
         ]
     };
 }
@@ -54,5 +57,6 @@ function createConfing_def({ input, output }) {
 export default [
     // createConfing_es({ input: '', output: '' }),
     //createConfing_def({ input: `src/index.ts`, output: `dist/es6/dom/index${minAppendix}.mjs` }),
-    createConfing_def({ input: 'src/vdom-builder/vdom-server-language.ts', output: `dist/es6/builder/index${minAppendix}.mjs` }),
+    // createConfing_def({ input: 'src/vdom-builder/vdom-server-language.ts', output: `dist/es6/builder/index${minAppendix}.mjs` }),
+    createConfing_def({ input: 'src/vdom-builder/vdom-server-language.ts', output: `dist/index${minAppendix}.mjs` }),
 ];
