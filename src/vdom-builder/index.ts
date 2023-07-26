@@ -6,39 +6,39 @@ import * as parse5 from 'parse5';
 import * as types from 'parse5/dist/tree-adapters/default';
 import { Attribute as typesAttribute } from 'parse5/dist/common/token';
 
-export type ASTNode = types.Node;
-export type ASTElement = types.Element;
-export type ASTAttribute = typesAttribute;
-export type ASTParentNode = types.ParentNode;
-export type ASTTextNode = types.TextNode;
-export type ASTDocument = types.Document;
-export type ASTDocumentFragment = types.DocumentFragment;
+type ASTNode = types.Node;
+type ASTElement = types.Element;
+type ASTAttribute = typesAttribute;
+type ASTParentNode = types.ParentNode;
+type ASTTextNode = types.TextNode;
+type ASTDocument = types.Document;
+type ASTDocumentFragment = types.DocumentFragment;
 
-export function isHTMLElement(el: ASTNode): el is ASTElement {
+function isHTMLElement(el: ASTNode): el is ASTElement {
     return (el as ASTElement).tagName !== undefined;
 }
 
-export function isParentNode(el: any): el is ASTParentNode {
+function isParentNode(el: any): el is ASTParentNode {
     return (el as ASTParentNode).childNodes !== undefined;
 }
 
-export function isTextNode(el: ASTNode): el is ASTTextNode {
+function isTextNode(el: ASTNode): el is ASTTextNode {
     return (el as ASTElement).tagName === undefined && el.nodeName === '#text';
 }
 
-export function isDocument(el: ASTNode): el is ASTDocument {
+function isDocument(el: ASTNode): el is ASTDocument {
     return (el as ASTElement).tagName === undefined && el.nodeName === '#document';
 }
 
-export function isDocumentFragment(el: ASTNode): el is ASTDocumentFragment {
+function isDocumentFragment(el: ASTNode): el is ASTDocumentFragment {
     return (el as ASTElement).tagName === undefined && el.nodeName === '#document-fragment';
 }
 
-export function nonEmptyValue(el: ASTTextNode): boolean {
+function nonEmptyValue(el: ASTTextNode): boolean {
     return el.value.trim().length !== 0;
 }
 
-export interface IHatElement {  // HTML Abstruct tree
+interface IHatElement {  // HTML Abstruct tree
     tagName: string;
     childNodes?: IHatElement[];
     attr?: {
@@ -47,8 +47,8 @@ export interface IHatElement {  // HTML Abstruct tree
     text?: string;
 }
 
-export type IHatNode = IHatElement | string;
-export type IHatNodes = IHatNode | IHatNode[];
+type IHatNode = IHatElement | string;
+type IHatNodes = IHatNode | IHatNode[];
 
 class DomUtils {
 
@@ -165,7 +165,7 @@ class DomUtils {
 
 } //class DomUtils
 
-export function findHtmlTag(astRoot: ASTDocument | ASTDocumentFragment | ASTElement | ASTNode | IHatNode, tagName: string): ASTElement | ASTNode | IHatNode | undefined {
+function findHtmlTag(astRoot: ASTDocument | ASTDocumentFragment | ASTElement | ASTNode | IHatNode, tagName: string): ASTElement | ASTNode | IHatNode | undefined {
     // 0. Seacrh on HTML AST tree, not ours tree.
     if (!astRoot) {
         return;
@@ -173,7 +173,7 @@ export function findHtmlTag(astRoot: ASTDocument | ASTDocumentFragment | ASTElem
     return DomUtils.nodeByTag(astRoot, tagName);
 }
 
-export function findAttr(ast: IHatNodes, attr: string, value: string): IHatNode | undefined {
+function findAttr(ast: IHatNodes, attr: string, value: string): IHatNode | undefined {
     if (!ast) {
         return;
     }
@@ -189,13 +189,13 @@ export function findAttr(ast: IHatNodes, attr: string, value: string): IHatNode 
     }
 }
 
-export function getChildren(node: IHatNode | undefined): IHatNodes | undefined {
+function getChildren(node: IHatNode | undefined): IHatNodes | undefined {
     if (node && (node as IHatElement).childNodes) {
         return (node as IHatElement).childNodes;
     }
 }
 
-export function transpileAstToHat(elem: ASTNode | ASTDocumentFragment): IHatNodes | undefined {
+function transpileAstToHat(elem: ASTNode | ASTDocumentFragment): IHatNodes | undefined {
     if (!elem) {
         return;
     }
@@ -216,7 +216,7 @@ export function transpileAstToHat(elem: ASTNode | ASTDocumentFragment): IHatNode
     }
 }
 
-export function makeDomArray(ast: IHatNodes): any[] {
+function makeDomArray(ast: IHatNodes): any[] {
     if (!ast) {
         return [];
     }
@@ -247,7 +247,7 @@ export function makeDomArray(ast: IHatNodes): any[] {
     return out;
 }
 
-export function stringifyDomArray(res: any): string {
+function stringifyDomArray(res: any): string {
     // JSON will create sorrounding [] if source is array.
     if (!res) {
         return '';
