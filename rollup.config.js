@@ -43,13 +43,11 @@ function createConfing_def({ input, output }) {
             format,
             extend: true,
             file: output,
-            sourcemap: true,
+            // sourcemap: true,
         },
         plugins: [
             ...commonPlugins(),
-            // typescript({ declaration: true }),
-            // typescript({ tsconfig: './tsconfig-builder.json' }),
-            typescript({ compilerOptions: { declaration: true, rootDir: './src/vdom-builder' } }),
+            typescript({ tsconfig: './tsconfig-builder.json' }),
             (minify ? terser() : [])
         ]
     };
@@ -59,5 +57,5 @@ export default [
     // createConfing_es({ input: '', output: '' }),
     //createConfing_def({ input: `src/index.ts`, output: `dist/es6/dom/index${minAppendix}.mjs` }),
     // createConfing_def({ input: 'src/vdom-builder/vdom-server-language.ts', output: `dist/es6/builder/index${minAppendix}.mjs` }),
-    createConfing_def({ input: 'src/vdom-builder/vdom-server-language.ts', output: `dist/index${minAppendix}.mjs` }),
+    createConfing_def({ input: 'src/vdom-builder/index.ts', output: `dist/index${minAppendix}.mjs` }),
 ];
