@@ -48,7 +48,8 @@ function createConfing_def({ input, output }) {
         plugins: [
             ...commonPlugins(),
             // typescript({ declaration: true }),
-            typescript({ tsconfig: './tsconfig-builder.json' }),
+            // typescript({ tsconfig: './tsconfig-builder.json' }),
+            typescript({ compilerOptions: { declaration: true, rootDir: './src/vdom-builder' } }),
             (minify ? terser() : [])
         ]
     };
