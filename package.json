@@ -49,7 +49,7 @@
     "_main": "./dist/es2020/index.mjs",
     "scripts": {
         "dev": "tsc -w",
-        "build": "yarn rollup -c",
+        "build": "rimraf dist && rollup -c",
         "prepublish": "yarn build"
     },
     "dependencies": {
@@ -60,6 +60,7 @@
         "@rollup/plugin-node-resolve": "^15.1.0",
         "@rollup/plugin-terser": "^0.4.3",
         "@rollup/plugin-typescript": "^11.1.2",
+        "rimraf": "^5.0.1",
         "rollup": "^3.26.3",
         "tslib": "^2.6.0",
         "typescript": "^5.1.6"
