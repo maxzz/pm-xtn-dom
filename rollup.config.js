@@ -2,6 +2,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import replace from '@rollup/plugin-replace';
+import replaceRegex from 'rollup-plugin-replace-regex';
+
 
 // This configuration expects environment parameters passed to the rollup:
 // (e.g. "rollup -c rollup.config.js --environment target:es5,format:umd,minify",
@@ -18,9 +21,28 @@ const minAppendix = minify ? '.min' : '';
 
 function commonPlugins() {
     return [
+        replaceComments(),
         resolve(),
         commonjs(),
     ];
+}
+
+function replaceComments() {
+    console.log('replaceComments()');
+    return replaceRegex({
+        preventAssignment: true,
+        // values: {
+        //     '(\/\*\{\}\*\/)': '//',
+        //     'q.q': 'aa',
+        // },
+        // values: {},
+        regexValues: {
+            // '(\/\*\{\}\*\/)': '//',
+            'q.q': 'qq',
+            'k.k': 'kk',
+            'a.a': 'aa',
+        },
+    });
 }
 
 function createConfing_es({ input, output }) {
@@ -53,6 +75,7 @@ function createConfing_def({ input, output }) {
     };
 }
 
+/** @type import('rollup').RollupOptions[] */
 export default [
     // createConfing_es({ input: '', output: '' }),
     //createConfing_def({ input: `src/index.ts`, output: `dist/es6/dom/index${minAppendix}.mjs` }),

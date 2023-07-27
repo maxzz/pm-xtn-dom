@@ -289,3 +289,7 @@ export function makeDomi(html: string, htmlIdOrTag?: string): string {
     let domJson: any[] = makeDomArray(hat);
     return stringifyDomArray(domJson);
 }
+
+/*{}*/ console.log('aa')
+//q1q console.log('qq')
+//a1a console.log('aa')
