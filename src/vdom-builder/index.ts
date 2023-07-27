@@ -292,4 +292,5 @@ export function makeDomi(html: string, htmlIdOrTag?: string): string {
 
 /*{}*/ console.log('aa')
 //q1q console.log('qq')
+//'never now'
 //a1a console.log('aa')

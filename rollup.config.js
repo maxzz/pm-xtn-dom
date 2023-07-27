@@ -35,7 +35,9 @@ function replaceComments() {
         //     '(\/\*\{\}\*\/)': '//',
         //     'q.q': 'aa',
         // },
-        // values: {},
+        values: {
+            'never now': 'never how'
+        },
         regexValues: {
             // '(\/\*\{\}\*\/)': '//',
             'q.q': 'qq',
