@@ -4,6 +4,7 @@ export function formatWith(str: string, props: any): string {
 }
 
 /*{}*/ console.log('aa')
+/*[what]{}*/ console.log('what')
 //q1q console.log('qq')
 //'never now'
 //a1a console.log('aa')

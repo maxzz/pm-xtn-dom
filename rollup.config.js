@@ -35,17 +35,21 @@ function replaceComments() {
         //     '(\/\*\{\}\*\/)': '//',
         //     'q.q': 'aa',
         // },
-        delimiters: ['',''],
+        // delimiters: ['',''],
         values: {
             'never now': '"never how"',
             // '/*{}*/': '//',
             // '\/\*\{\}\*\/': '//',
-            '\\/\\*\\{\\}\\*\\/': '//',
         },
         regexValues: {
             'q.q': 'qq',
             'k.k': 'kk',
             'a.a': 'aa',
+
+            // '\\/\\*\\{\\}\\*\\/': '//',
+            '\\/\\*\\{\\}\\*\\/': (id, name, match) => { console.log('regex replace', {id, name, match}); return '//' },
+            '\\/\\*\\[.*\\]\\{\\}\\*\\/': (id, name, match) => { console.log('regex replace', {id, name, match}); return '//' },
+
             // '\/\*\{\}\*\/': '//',
             // '\\/\\*\\{\\}\\*\\/': '//',
             // '/*{}*/': '//',
