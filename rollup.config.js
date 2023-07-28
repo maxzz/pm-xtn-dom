@@ -35,14 +35,20 @@ function replaceComments() {
         //     '(\/\*\{\}\*\/)': '//',
         //     'q.q': 'aa',
         // },
+        delimiters: ['',''],
         values: {
-            'never now': 'never how'
+            'never now': '"never how"',
+            // '/*{}*/': '//',
+            // '\/\*\{\}\*\/': '//',
+            '\\/\\*\\{\\}\\*\\/': '//',
         },
         regexValues: {
-            // '(\/\*\{\}\*\/)': '//',
             'q.q': 'qq',
             'k.k': 'kk',
             'a.a': 'aa',
+            // '\/\*\{\}\*\/': '//',
+            // '\\/\\*\\{\\}\\*\\/': '//',
+            // '/*{}*/': '//',
         },
     });
 }
@@ -60,7 +66,7 @@ function createConfing_es({ input, output }) {
     };
 }
 
-function createConfing_def({ input, output }) {
+function createConfing_def({ input, output, tsconfig }) {
     return {
         input,
         output: {
@@ -71,7 +77,7 @@ function createConfing_def({ input, output }) {
         },
         plugins: [
             ...commonPlugins(),
-            typescript({ tsconfig: './tsconfig-builder.json' }),
+            typescript({ tsconfig }),
             (minify ? terser() : [])
         ]
     };
@@ -82,5 +88,8 @@ export default [
     // createConfing_es({ input: '', output: '' }),
     //createConfing_def({ input: `src/index.ts`, output: `dist/es6/dom/index${minAppendix}.mjs` }),
     // createConfing_def({ input: 'src/vdom-builder/vdom-server-language.ts', output: `dist/es6/builder/index${minAppendix}.mjs` }),
-    createConfing_def({ input: 'src/vdom-builder/index.ts', output: `dist/index${minAppendix}.mjs` }),
+
+
+    // createConfing_def({ input: 'src/vdom-builder/index.ts', output: `dist/index${minAppendix}.mjs`, tsconfig: './tsconfig-builder.json' }),
+    createConfing_def({ input: 'src/utils/format-with.ts', output: `dist/index${minAppendix}.mjs`, tsconfig: './tsconfig.json' }),
 ];
