@@ -37,7 +37,7 @@ function replaceComments() {
         // },
         // delimiters: ['',''],
         values: {
-            'never now': '"never how"',
+            // 'never now': '"never how"',
             // '/*{}*/': '//',
             // '\/\*\{\}\*\/': '//',
         },
@@ -47,13 +47,14 @@ function replaceComments() {
             'a.a': 'aa',
 
             // '\\/\\*\\{\\}\\*\\/': '//',
-            '\\/\\*\\{\\}\\*\\/': (id, name, match) => { console.log('regex replace', {id, name, match}); return '//' },
-            '\\/\\*\\[.*\\]\\{\\}\\*\\/': (id, name, match) => { console.log('regex replace', {id, name, match}); return '//' },
+            '\\/\\*\\{\\}\\*\\/': (id, match, key) => { console.log('regex replace', { id, match, key }); return '//'; },
+            '\\/\\*\\[.*\\]\\{\\}\\*\\/': (id, match, key) => { console.log('regex replace', { id, match, key }); return '//'; },
 
             // '\/\*\{\}\*\/': '//',
             // '\\/\\*\\{\\}\\*\\/': '//',
             // '/*{}*/': '//',
         },
+        verbose: true,
     });
 }
 
