@@ -28,7 +28,7 @@ function commonPlugins() {
 }
 
 function replaceComments() {
-    console.log('replaceComments()');
+    console.log('----------------------- replaceComments()');
     return replaceRegex({
         preventAssignment: true,
         // values: {
@@ -36,25 +36,27 @@ function replaceComments() {
         //     'q.q': 'aa',
         // },
         // delimiters: ['',''],
-        values: {
-            // 'never now': '"never how"',
-            // '/*{}*/': '//',
-            // '\/\*\{\}\*\/': '//',
-        },
-        regexValues: {
-            'q.q': 'qq',
-            'k.k': 'kk',
-            'a.a': 'aa',
+        // values: {
+        //     // 'never now': '"never how"',
+        //     // '/*{}*/': '//',
+        //     // '\/\*\{\}\*\/': '//',
+        // },
+        // regexValues: {
+        //     'q.q': 'qq',
+        //     'k.k': 'kk',
+        //     'a.a': 'aa',
 
-            // '\\/\\*\\{\\}\\*\\/': '//',
-            '\\/\\*\\{\\}\\*\\/': (id, match, key) => { console.log('regex replace', { id, match, key }); return '//'; },
-            '\\/\\*\\[.*\\]\\{\\}\\*\\/': (id, match, key) => { console.log('regex replace', { id, match, key }); return '//'; },
+        //     // '\\/\\*\\{\\}\\*\\/': '//',
+        //     '\\/\\*\\{\\}\\*\\/': (id, match, key) => { console.log('regex replace', { id, match, key }); return '//'; },
+        //     '\\/\\*\\[.*\\]\\{\\}\\*\\/': (id, match, key) => { console.log('regex replace', { id, match, key }); return '//'; },
 
-            // '\/\*\{\}\*\/': '//',
-            // '\\/\\*\\{\\}\\*\\/': '//',
-            // '/*{}*/': '//',
-        },
+        //     // '\/\*\{\}\*\/': '//',
+        //     // '\\/\\*\\{\\}\\*\\/': '//',
+        //     // '/*{}*/': '//',
+        // },
         verbose: true,
+        comments: true,
+        conditions: ['all']
     });
 }
 
