@@ -1,35 +1,46 @@
 export function formatWith(str: string, props: any): string {
-	// 0. formatWith("a{b}", {b:"c"}) result:"ac"; formatWith("a{b}c", {d:"d"}); //match:{b} name:b result:"a{b}c"
-	return str.replace(/{([\w\$_-]+)}/gm, (match, name) => props[name] || match);
+    // 0. formatWith("a{b}", {b:"c"}) result:"ac"; formatWith("a{b}c", {d:"d"}); //match:{b} name:b result:"a{b}c"
+    return str.replace(/{([\w\$_-]+)}/gm, (match, name) => props[name] || match);
 }
+let a = '';
 
-/*{}*/ console.log('aa')
+/*[aa] <>*/
+
+/*{}*/ a += '_1';
 //
-function aa() {
-/*[what2]{}*/ console.log('what2')
-}
+
+/*[what2]{}*/ a += '_2';
+
 //
-/*[what]{}*/ console.log('what')
+/*[what]{}*/ a += '_3';
 
 //
 /*[all]{*/
-	console.log('block 1')
+a += '_4';
 /*[all]}*/
 
 //
-
 /*[all2]{*/
-	console.log('block 2')
+    a += '_5';
 /*[all2]}*/
+
+//
+/*[all2,all3]{*/
+    a += '_6';
+/*[all2]}*/
+
 
 //
 
 /*{*/
-	console.log('block 3')
+    a += '_7';
 /*}*/
 //
+/*[aa]{}*/ /*[bb]{}*/ a += '_8';
 //
 //
 //q1q console.log('qq')
 //'never now'
 //a1a console.log('aa')
+
+console.log('a', a);

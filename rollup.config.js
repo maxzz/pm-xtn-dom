@@ -56,7 +56,8 @@ function replaceComments() {
         // },
         verbose: true,
         comments: true,
-        conditions: ['all']
+        conditions: ['all'],
+        commentsForRelease: true,
     });
 }
 
