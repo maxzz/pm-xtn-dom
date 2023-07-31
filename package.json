@@ -1,6 +1,6 @@
 {
     "name": "pm-xtn-dom",
-    "version": "1.0.13",
+    "version": "1.0.14",
     "description": "PM extension DOM access",
     "license": "MIT",
     "repository": {
@@ -25,7 +25,7 @@
     "exports": {
         "./package.json": "./package.json",
         "./ts": "./src/index.ts",
-        ".": {
+        "./builder": {
             "types": "./dist/es6/builder/index.d.ts",
             "import": {
                 "types": "./dist/es6/builder/index.d.ts",
@@ -33,13 +33,18 @@
             },
             "default": "./dist/es6/builder/index.mjs"
         },
-        "./ts2": {
-            "types": "./dist/es6/index.d.ts",
+        "./es6": {
+            "types": "./dist/es6/dom/types/index.d.ts",
+            "import": "./dist/es6/dom/index.mjs",
+            "default": "./dist/es6/dom/index.mjs"
+        },
+        "./*": {
+            "types": "./dist/es6/dom/types/index.d.ts",
             "import": {
-                "types": "./dist/es6/index.d.ts",
-                "default": "./dist/es6/index.mjs"
+                "types": "./dist/es6/dom/types/index.d.ts",
+                "default": "./dist/es6/dom/index.mjs"
             },
-            "default": "./dist/es6/index.mjs"
+            "default": "./dist/es6/dom/index.mjs"
         }
     },
     "typesVersions": {
@@ -47,11 +52,14 @@
             "ts": [
                 "./src/index.ts"
             ],
-            ".": [
+            "builder": [
                 "./dist/es6/builder/index.d.ts"
             ],
-            "ts2": [
-                "./dist/es6/index.d.ts"
+            "es6": [
+                "./dist/es6/dom/types/index.d.ts"
+            ],
+            "./*": [
+                "./dist/es6/dom/types/index.d.ts"
             ]
         }
     },
