@@ -1,5 +1,10 @@
 export function throttleByRAF(eventName: string, customEventName: string, obj?: any) { // from https://developer.mozilla.org/en-US/docs/Web/Events/resize
-    obj = obj || window;
+    const win = typeof window !== 'undefined' ? window : undefined;
+    if (!win) {
+        return;
+    }
+    
+    obj = obj || win;
     let running = false;
 
     function func() {
