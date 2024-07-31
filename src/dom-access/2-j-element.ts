@@ -1,6 +1,6 @@
-import { css } from "./dom-css";
-import { cssArr, dir, height, private_getOffset, private_setOffset, width } from "./dom-utils";
-import { IPointNum } from "./types";
+import { css } from "./3-css";
+import { cssArr, dir, height, private_getOffset, private_setOffset, width } from "./2-css-utils";
+import { IPointNum } from "./9-types";
 
 export class jElement {
     elem: HTMLElement = null;

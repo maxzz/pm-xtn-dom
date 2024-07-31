@@ -8,17 +8,10 @@
         "url": "https://github.com/maxzz/pm-xtn-dom.git"
     },
     "homepage": "https://github.com/maxzz/pm-xtn-dom",
-    "devDependencies": {
-        "@rollup/plugin-commonjs": "^26.0.1",
-        "@rollup/plugin-node-resolve": "^15.1.0",
-        "@rollup/plugin-terser": "^0.4.3",
-        "@rollup/plugin-typescript": "^11.1.2",
-        "parse5": "^7.1.2",
-        "rimraf": "^6.0.1",
-        "rollup": "^4.19.1",
-        "tslib": "^2.6.0",
-        "typescript": "^5.1.6"
-    },
+    "files": [
+        "./src",
+        "./dist"
+    ],
     "type": "module",
     "_types": "./dist/es6/index.d.ts",
     "_main": "./dist/es6/index.mjs",
@@ -63,14 +56,20 @@
             ]
         }
     },
-    "files": [
-        "./src",
-        "./dist"
-    ],
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^26.0.1",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^11.1.6",
+        "parse5": "^7.1.2",
+        "rimraf": "^6.0.1",
+        "rollup": "^4.19.1",
+        "tslib": "^2.6.3",
+        "typescript": "5.5.4"
+    },
     "scripts": {
         "dev": "tsc -w",
         "build": "rimraf dist && rollup -c",
-        "_prepublish": "pnpm build",
         "to-npm": "pnpm publish --no-git-checks"
     }
 }

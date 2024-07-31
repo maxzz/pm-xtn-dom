@@ -1,6 +1,6 @@
-import { IPoint, IPointNum, di, guardDocument, guardWindow, px } from "./types";
-import { css } from "./dom-css";
-export { css } from "./dom-css";
+import { IPoint, IPointNum } from "../9-types";
+import { css } from "../3-css";
+import { di, guardDocument, guardWindow, px } from "../8-guards";
 
 export function cssArr(el: HTMLElement, cssPropNames: string[]): string[] {
     // 0. Get CSS properties as an array vs. css() that returns object.

@@ -1,5 +1,5 @@
-import { MAXZALTPSW, traceAccess } from "../types";
-import { guardInput } from "./types";
+import { MAXZALTPSW, traceAccess } from "../../types";
+import { guardInput } from "../8-guards";
 
 export interface IVisibilityCache {
     visible: Set<HTMLElement>;
