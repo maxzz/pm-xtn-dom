@@ -1,8 +1,6 @@
-export * from './format-with';
-export * from './format-indent';
-export * from './format-label-trim';
-export * from './json-quotas';
-export * from './throttle-by-raf';
-export * as tmurl from './tm-urls';
-export * from './vdom-client-htmlmaker';
+export * from './1-format';
+export * from './3-json-quotas';
+export * from './4-throttle-by-raf';
+export * as tmurl from './2-tm-urls';
+export * from './5-vdom-client-htmlmaker';
 
