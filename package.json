@@ -70,6 +70,7 @@
     "scripts": {
         "dev": "tsc -w",
         "build": "rimraf dist && rollup -c",
-        "prepublish": "yarn build"
+        "_prepublish": "pnpm build",
+        "to-npm": "pnpm publish --no-git-checks"
     }
 }
